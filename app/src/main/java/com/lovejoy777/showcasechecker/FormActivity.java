@@ -1,11 +1,15 @@
 package com.lovejoy777.showcasechecker;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.JsonWriter;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -272,9 +276,32 @@ public class FormActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
+            case R.id.action_info:
+                alertDialog(getString(R.string.instructions));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void alertDialog( String message ) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(FormActivity.this);
+
+        dialog.setTitle("Instructions")
+                .setIcon(R.drawable.ic_info_white_24dp)
+                .setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialoginterface, int i) {
+                    }
+                }).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

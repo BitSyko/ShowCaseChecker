@@ -324,6 +324,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|end"
-        android:id="@+id/snackbar">
+        android:id="@+id/snackbar"
+        android:tint="@color/white">
     </android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>
