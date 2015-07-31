@@ -1,0 +1,329 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <android.support.v7.widget.Toolbar
+
+        android:id="@+id/toolbar"
+        android:layout_height="56dp"
+        android:layout_width="match_parent"
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="?android:attr/colorPrimary"
+        android:gravity="center"
+        tools:context="com.lovejoy777.showcasechecker.FormActivity"
+        android:elevation="4dp"
+        android:theme="@style/Base.Theme.Test">
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/layout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/background_material_light"
+        android:layout_below="@+id/toolbar"
+        android:fillViewport="true"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="none">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_material_light"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/author"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Author"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/downloadlink"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Download Link"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/icon"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Icon H=256 x W=256"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/promo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Promo Image W=1598 x H=10526"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/screenshot_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Screenshot 1 H=1920"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/screenshot_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Screenshot 2 H=1920"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/screenshot_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Screenshot 3 H=1920"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/googleplus"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Google+ Post"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/version"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Version Number"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/donatedownload"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Donate Version Download Link"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/pluginversion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Plugin Version"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/donateversion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Version Number For Donate Theme If You Have"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/wallpaper"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Wallpaper"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <CheckBox
+                android:id="@+id/lollipopsupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lollipop Support" />
+            <CheckBox
+                android:id="@+id/msupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M Support" />
+            <CheckBox
+                android:id="@+id/basicrrolollipop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic RRO Lollipop" />
+            <CheckBox
+                android:id="@+id/basicrrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic RRO M" />
+            <CheckBox
+                android:id="@+id/layerstype2lollipop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Layers Type 2 Lollipop" />
+            <CheckBox
+                android:id="@+id/layerstype3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Layers Type 3" />
+            <CheckBox
+                android:id="@+id/layerstype3m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Layers Type 3 M" />
+            <CheckBox
+                android:id="@+id/touchwiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Touchwiz" />
+            <CheckBox
+                android:id="@+id/lg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LG" />
+            <CheckBox
+                android:id="@+id/sense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sense" />
+            <CheckBox
+                android:id="@+id/xperia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xperia" />
+            <CheckBox
+                android:id="@+id/asuszenui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asus ZenUI" />
+            <CheckBox
+                android:id="@+id/hdpi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hdpi" />
+            <CheckBox
+                android:id="@+id/mdpi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mdpi" />
+            <CheckBox
+                android:id="@+id/xhdpi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xhdpi" />
+            <CheckBox
+                android:id="@+id/xxhdpi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxhdpi" />
+            <CheckBox
+                android:id="@+id/xxxhdpi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xxxhdpi" />
+            <CheckBox
+                android:id="@+id/free"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Free" />
+            <CheckBox
+                android:id="@+id/donate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Donate" />
+            <CheckBox
+                android:id="@+id/paid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paid" />
+            <CheckBox
+                android:id="@+id/doesitneedupdating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Does It Need Updating" />
+            <CheckBox
+                android:id="@+id/willyoubeupdating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Will You Be Updating" />
+            <CheckBox
+                android:id="@+id/bootanimation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Boot Animation" />
+            <CheckBox
+                android:id="@+id/font"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Font" />
+
+            <Button
+                android:text="Generate Json"
+                android:id="@+id/generate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="send"
+                />
+        </LinearLayout>
+    </ScrollView>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|end"
+        android:id="@+id/snackbar">
+    </android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -34,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        card1 = (CardView) findViewById(R.id.CardView_card1);
+        //card1 = (CardView) findViewById(R.id.CardView_card1);
+        card1 = (CardView) findViewById(R.id.CardView1);
         card2 = (CardView) findViewById(R.id.CardView_card2);
         ETJson = (EditText) findViewById(R.id.ettextview1);
         button = (Button) findViewById(R.id.button);
@@ -51,7 +51,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        card1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent formactivity = new Intent(MainActivity.this, FormActivity.class);
+                Bundle bndlanimation =
+                        ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
+                startActivity(formactivity, bndlanimation);
+
+            }
+        });
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

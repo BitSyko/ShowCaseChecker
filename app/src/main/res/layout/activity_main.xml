@@ -44,6 +44,71 @@
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/CardView1"
+                android:elegantTextHeight="false"
+                android:elevation="5dp"
+                android:background="@color/card_background"
+                android:backgroundTint="@color/card_background"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp">
+
+
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5.59"
+                    >
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="156dp"
+                        android:id="@+id/imageView"
+                        android:background="@drawable/heroimage" />
+
+                    <TextView
+                        android:textColor="@color/text_color_inverse"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="test"
+                        android:id="@+id/textViewCard"
+                        android:layout_gravity="start"
+                        android:textStyle="bold"
+                        android:elevation="5dp"
+                        android:layout_alignBottom="@+id/imageView"
+                        android:textSize="24sp"
+                        android:paddingBottom="8dp"
+                        android:background="#1a000000"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explore all Overlays which are free. \nSome of them also include an option to support the developer with a donation."
+                        android:id="@+id/textViewCard2"
+                        android:layout_gravity="start|top"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/textColorPrimary"
+                        android:elevation="5dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_below="@+id/imageView"
+                        android:layout_marginRight="16dp"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                card_view:cardBackgroundColor="@color/card_background"
+
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/CardView_card1"
                 android:elegantTextHeight="false"
                 android:elevation="5dp"

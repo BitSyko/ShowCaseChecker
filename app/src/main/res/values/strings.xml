@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="test1">Test 1</string>
+    <string name="formactivity">Generate Layers Json</string>
     <string name="paid">Paid Layers</string>
     <string name="donate">Donate Layers</string>
     <string name="details">Test 2</string>
