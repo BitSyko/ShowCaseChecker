@@ -4,8 +4,11 @@ import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -92,9 +95,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void alertDialog( String message ) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-
+        Drawable icon = ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_info_white_24dp).mutate();
+        icon.setColorFilter(getResources().getColor(R.color.textColorPrimary), PorterDuff.Mode.MULTIPLY );
         dialog.setTitle("Instructions")
-                .setIcon(R.drawable.ic_info_white_24dp)
+                .setIcon(icon)
                 .setMessage(message)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialoginterface, int i) {

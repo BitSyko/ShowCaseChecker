@@ -1,9 +1,12 @@
 package com.lovejoy777.showcasechecker;
 
 import android.content.DialogInterface;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -289,9 +292,10 @@ public class FormActivity extends AppCompatActivity {
 
     private void alertDialog( String message ) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(FormActivity.this);
-
+        Drawable icon = ContextCompat.getDrawable(FormActivity.this, R.drawable.ic_info_white_24dp).mutate();
+        icon.setColorFilter(getResources().getColor(R.color.textColorPrimary), PorterDuff.Mode.MULTIPLY );
         dialog.setTitle("Instructions")
-                .setIcon(R.drawable.ic_info_white_24dp)
+                .setIcon(icon)
                 .setMessage(message)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialoginterface, int i) {
