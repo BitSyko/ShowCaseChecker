@@ -45,7 +45,7 @@
                     android:id="@+id/title"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Title"
+                    android:hint="@string/title"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -55,7 +55,7 @@
                     android:id="@+id/description"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Description"
+                    android:hint="@string/description"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -65,7 +65,7 @@
                     android:id="@+id/author"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Author"
+                    android:hint="@string/author"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -75,7 +75,7 @@
                     android:id="@+id/downloadlink"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Download Link"
+                    android:hint="@string/downloadlink"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -85,7 +85,7 @@
                     android:id="@+id/icon"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Icon H=256 x W=256"
+                    android:hint="@string/icon"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -95,7 +95,7 @@
                     android:id="@+id/promo"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Promo Image W=1598 x H=10526"
+                    android:hint="@string/promo"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -105,7 +105,7 @@
                     android:id="@+id/screenshot_1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Screenshot 1 H=1920"
+                    android:hint="@string/screenshot_1"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -115,7 +115,7 @@
                     android:id="@+id/screenshot_2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Screenshot 2 H=1920"
+                    android:hint="@string/screenshot_2"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -125,7 +125,7 @@
                     android:id="@+id/screenshot_3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Screenshot 3 H=1920"
+                    android:hint="@string/screenshot_3"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -135,7 +135,7 @@
                     android:id="@+id/googleplus"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Google+ Post"
+                    android:hint="@string/googleplus"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -145,7 +145,7 @@
                     android:id="@+id/version"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Version Number"
+                    android:hint="@string/version2"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -155,7 +155,7 @@
                     android:id="@+id/donatedownload"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Donate Version Download Link"
+                    android:hint="@string/donatedownload"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -165,7 +165,7 @@
                     android:id="@+id/pluginversion"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Plugin Version"
+                    android:hint="@string/pluginversion"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -175,7 +175,7 @@
                     android:id="@+id/donateversion"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Version Number For Donate Theme If You Have"
+                    android:hint="@string/donateversion"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -185,132 +185,132 @@
                     android:id="@+id/wallpaper"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Wallpaper"
+                    android:hint="@string/wallpaper"
                     />
             </android.support.design.widget.TextInputLayout>
             <CheckBox
                 android:id="@+id/lollipopsupport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lollipop Support" />
+                android:text="@string/lollipopsupport" />
             <CheckBox
                 android:id="@+id/msupport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="M Support" />
+                android:text="@string/msupport" />
             <CheckBox
                 android:id="@+id/basicrrolollipop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Basic RRO Lollipop" />
+                android:text="@string/basicrrolollipop" />
             <CheckBox
                 android:id="@+id/basicrrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Basic RRO M" />
+                android:text="@string/basicrrom" />
             <CheckBox
                 android:id="@+id/layerstype2lollipop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Layers Type 2 Lollipop" />
+                android:text="@string/layerstype2lollipop" />
             <CheckBox
                 android:id="@+id/layerstype3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Layers Type 3" />
+                android:text="@string/layerstype3" />
             <CheckBox
                 android:id="@+id/layerstype3m"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Layers Type 3 M" />
+                android:text="@string/layerstype3m" />
             <CheckBox
                 android:id="@+id/touchwiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Touchwiz" />
+                android:text="@string/touchwiz" />
             <CheckBox
                 android:id="@+id/lg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LG" />
+                android:text="@string/lg" />
             <CheckBox
                 android:id="@+id/sense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sense" />
+                android:text="@string/sense" />
             <CheckBox
                 android:id="@+id/xperia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Xperia" />
+                android:text="@string/xperia" />
             <CheckBox
                 android:id="@+id/asuszenui"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Asus ZenUI" />
+                android:text="@string/asuszenui" />
             <CheckBox
                 android:id="@+id/hdpi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hdpi" />
+                android:text="@string/hdpi" />
             <CheckBox
                 android:id="@+id/mdpi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="mdpi" />
+                android:text="@string/mdpi" />
             <CheckBox
                 android:id="@+id/xhdpi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="xhdpi" />
+                android:text="@string/xhdpi" />
             <CheckBox
                 android:id="@+id/xxhdpi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="xxhdpi" />
+                android:text="@string/xxhdpi" />
             <CheckBox
                 android:id="@+id/xxxhdpi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="xxxhdpi" />
+                android:text="@string/xxxhdpi" />
             <CheckBox
                 android:id="@+id/free"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Free" />
+                android:text="@string/free" />
             <CheckBox
                 android:id="@+id/donate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Donate" />
+                android:text="@string/donate2" />
             <CheckBox
                 android:id="@+id/paid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Paid" />
+                android:text="@string/paid2" />
             <CheckBox
                 android:id="@+id/doesitneedupdating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Does It Need Updating" />
+                android:text="@string/doesitneedupdating" />
             <CheckBox
                 android:id="@+id/willyoubeupdating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Will You Be Updating" />
+                android:text="@string/willyoubeupdating" />
             <CheckBox
                 android:id="@+id/bootanimation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Boot Animation" />
+                android:text="@string/bootanimation" />
             <CheckBox
                 android:id="@+id/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Font" />
+                android:text="@string/font" />
 
             <Button
-                android:text="Generate Json"
+                android:text="@string/send"
                 android:id="@+id/generate"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

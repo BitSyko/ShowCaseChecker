@@ -12,14 +12,12 @@
     <string name="showcasetitle">Showcase</string>
     <string name="General">General</string>
 
-    <string name="description">Description</string>
     <string name="error">Error</string>
     <string name="developer">Developer</string>
     <string name="testdeveloper">TestDeveloper</string>
     <string name="googlepluspost">Google+ Post</string>
     <string name="gettheme">Get Theme</string>
     <string name="version">Version</string>
-    <string name="author">Author</string>
     <string name="layerstheme">Layers Theme</string>
     <string name="action_search">Search</string>
 
@@ -32,4 +30,48 @@
     <string name="card2subtext2">Then enter the file path, /sdcard/Download/Authors_Name.\nspaces are substituted with underscores.\nThen click the Test File button.</string>
     <string name="noneplaystorecard3header">Create Your Json File</string>
     <string name="noneplaystorecard3">fill out a simple form</string>
+
+    <!-- Json Form EditText -->
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="author">Author</string>
+    <string name="downloadlink">Download Link</string>
+    <string name="icon">Icon H=256 x W=256</string>
+    <string name="promo">Promo Image W=1598 x H=10526</string>
+    <string name="screenshot_1">Screenshot 1 H=1920</string>
+    <string name="screenshot_2">Screenshot 2 H=1920</string>
+    <string name="screenshot_3">Screenshot 3 H=1920</string>
+    <string name="googleplus">Google+ Post</string>
+    <string name="version2">Version Number</string>
+    <string name="donatedownload">Donate Version Download Link</string>
+    <string name="pluginversion">Plugin Version</string>
+    <string name="donateversion">Version Number For Donate Theme If You Have</string>
+    <string name="wallpaper">Wallpaper</string>
+    <!-- Json Form CheckBox -->
+    <string name="lollipopsupport">Lollipop Support</string>
+    <string name="msupport">M Support</string>
+    <string name="basicrrolollipop">Basic RRO Lollipop</string>
+    <string name="basicrrom">Basic RRO M</string>
+    <string name="layerstype2lollipop">Layers Type 2 Lollipop</string>
+    <string name="layerstype3">Layers Type 3</string>
+    <string name="layerstype3m">Layers Type 3 M</string>
+    <string name="touchwiz">Touchwiz</string>
+    <string name="lg">LG</string>
+    <string name="sense">Sense</string>
+    <string name="xperia">Xperia</string>
+    <string name="asuszenui">Asus ZenUI</string>
+    <string name="hdpi">hdpi</string>
+    <string name="mdpi">mdpi</string>
+    <string name="xhdpi">xhdpi</string>
+    <string name="xxhdpi">xxhdpi</string>
+    <string name="xxxhdpi">xxxhdpi</string>
+    <string name="free">Free</string>
+    <string name="donate2">Donate</string>
+    <string name="paid2">Paid</string>
+    <string name="doesitneedupdating">Does It Need Updating</string>
+    <string name="willyoubeupdating">Will You Be Updating</string>
+    <string name="bootanimation">Boot Animation</string>
+    <string name="font">Font</string>
+    <!-- Json Form Button -->
+    <string name="send">Generate Json</string>
 </resources>
