@@ -3,7 +3,6 @@ package com.lovejoy777.showcasechecker;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,11 +21,9 @@ public class MainActivity extends AppCompatActivity {
     CardView card1, card2;
     EditText ETJson;
     Button button;
-    Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -36,40 +33,24 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        //card1 = (CardView) findViewById(R.id.CardView_card1);
         card1 = (CardView) findViewById(R.id.CardView1);
-        card2 = (CardView) findViewById(R.id.CardView_card2);
+        card2 = (CardView) findViewById(R.id.CardView2);
         ETJson = (EditText) findViewById(R.id.ettextview1);
         button = (Button) findViewById(R.id.button);
-        button1 = (Button) findViewById(R.id.button1);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent jsonFormIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://wh0cares.github.io/submit.html"));
-                startActivity(jsonFormIntent);
-
-
-            }
-        });
 
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent formactivity = new Intent(MainActivity.this, FormActivity.class);
                 Bundle bndlanimation =
                         ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
                 startActivity(formactivity, bndlanimation);
-
             }
         });
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 String etjson = ETJson.getText().toString();
 
@@ -92,14 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
     } // ends onCreate
-
-
 
     public void savePrefs(String key, String value) {
 
@@ -109,16 +83,9 @@ public class MainActivity extends AppCompatActivity {
         edit.commit();
     }
 
-
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.back2, R.anim.back1);
     }
-
-
-
-
 }

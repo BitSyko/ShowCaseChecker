@@ -23,11 +23,10 @@
 
     <!-- MAIN SCREEN CARD TEXT -->
     <string name="layersthemestitle">Layers Themes</string>
-    <string name="card1header">Json Creator</string>
-    <string name="card1subtext1">Enter Json Path Below</string>
-    <string name="card2header">Instructions</string>
-    <string name="card2subtext1">Click the Fill Form button, this will launch a web form to fill out.\nMake sure to click the download button at the bottom of the form.</string>
-    <string name="card2subtext2">Then enter the file path, /sdcard/Download/Authors_Name.\nspaces are substituted with underscores.\nThen click the Test File button.</string>
+    <string name="card1header">Generate Layers Json File</string>
+    <string name="card1subtext">Click Me ¯\\_(ツ)_/¯</string>
+    <string name="card2header">Select Json File</string>
+    <string name="card2subtext">Enter Json Path Below</string>
     <string name="noneplaystorecard3header">Create Your Json File</string>
     <string name="noneplaystorecard3">fill out a simple form</string>
 

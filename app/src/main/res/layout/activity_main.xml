@@ -72,7 +72,7 @@
                         android:textColor="@color/text_color_inverse"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="test"
+                        android:text="@string/card1header"
                         android:id="@+id/textViewCard"
                         android:layout_gravity="start"
                         android:textStyle="bold"
@@ -88,8 +88,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Explore all Overlays which are free. \nSome of them also include an option to support the developer with a donation."
-                        android:id="@+id/textViewCard2"
+                        android:text="@string/card1subtext"
+                        android:id="@+id/textViewCard1"
                         android:layout_gravity="start|top"
                         android:layout_marginStart="16dp"
                         android:textColor="@color/textColorPrimary"
@@ -109,7 +109,7 @@
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/CardView_card1"
+                android:id="@+id/CardView2"
                 android:elegantTextHeight="false"
                 android:elevation="5dp"
                 android:background="@color/card_background"
@@ -130,7 +130,7 @@
                         android:textColor="@color/textColorPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/card1header"
+                        android:text="@string/card2header"
                         android:id="@+id/textView1"
                         android:layout_gravity="start|top"
                         android:layout_marginStart="16dp"
@@ -139,20 +139,11 @@
                         android:textSize="24dp"
                         android:elevation="5dp" />
 
-
-                    <Button
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:text="Fill Form"
-                        android:id="@+id/button" />
-
                     <TextView
                         android:textColor="@color/textColorPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/card1subtext1"
+                        android:text="@string/card2subtext"
                         android:id="@+id/textView2"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
@@ -176,75 +167,10 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:text="Test File"
-                        android:id="@+id/button1" />
+                        android:id="@+id/button" />
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                card_view:cardBackgroundColor="@color/card_background"
-
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/CardView_card2"
-                android:elegantTextHeight="false"
-                android:elevation="5dp"
-                android:background="@color/card_background"
-                android:backgroundTint="@color/card_background"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp">
-
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5.59"
-                    >
-
-                    <TextView
-                        android:textColor="@color/textColorPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/card2header"
-                        android:id="@+id/textView3"
-                        android:layout_gravity="start|top"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
-                        android:elevation="5dp" />
-
-                    <TextView
-                        android:textColor="@color/textColorPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/card2subtext1"
-                        android:id="@+id/textView4"
-                        android:layout_gravity="start|top"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:elevation="5dp" />
-
-                    <TextView
-                        android:textColor="@color/textColorPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/card2subtext2"
-                        android:id="@+id/textView5"
-                        android:layout_gravity="start|top"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:elevation="5dp" />
-
-
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-
         </LinearLayout>
 
     </ScrollView>
