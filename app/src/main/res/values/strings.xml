@@ -24,8 +24,8 @@
     <string name="instructions">
         Click the Generate Layers Json File card, this will open a activity with a form to fill out.
         \nMake sure to click the generate button at the bottom of the form.
-    /nThen enter the file path, /sdcard/Authors_Name.
-        \nspaces are substituted with underscores.
+        \nThen enter the file path, /sdcard/Authors_Name.
+        \nfile name spaces are substituted with underscores.
         \nThen click the Test File button.</string>
 
     <!-- MAIN SCREEN CARD TEXT -->

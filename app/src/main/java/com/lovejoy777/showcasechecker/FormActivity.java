@@ -41,7 +41,7 @@ public class FormActivity extends AppCompatActivity {
 
     Button generate;
 
-    String s_title, s_description, s_author, s_downloadlink,
+    String s_title, s_description, s_author, s_author2, s_downloadlink,
             s_icon, s_promo, s_screenshot_1, s_screenshot_2,
             s_screenshot_3, s_googleplus, s_version, s_donatedownload,
             s_donateversion, s_wallpaper, s_pluginversion;
@@ -103,16 +103,19 @@ public class FormActivity extends AppCompatActivity {
 
     public void send(View v) {
         if (author.getText().toString().trim().length() > 0) {
-            s_author = author.getText().toString();
+            String nospace = author.getText().toString();
+            nospace = nospace.replaceAll(" ", "_");
+            s_author2 = nospace;
+            //s_author = author.getText().toString();
         } else {
-            s_author = "false";
+            s_author2 = "false";
         }
-        File file = new File(Environment.getExternalStorageDirectory(), s_author + ".json");
+        File file = new File(Environment.getExternalStorageDirectory(), s_author2 + ".json");
         try {
             FileOutputStream out = new FileOutputStream(file);
             writeJson(out);
             View coordinatorLayoutView = findViewById(R.id.snackbar);
-            Snackbar.make(coordinatorLayoutView, "Created /sdcard/" + s_author + ".json", Snackbar.LENGTH_LONG)
+            Snackbar.make(coordinatorLayoutView, "Created /sdcard/" + s_author2 + ".json", Snackbar.LENGTH_LONG)
                     .show();
         } catch (IOException e) {
             e.printStackTrace();
