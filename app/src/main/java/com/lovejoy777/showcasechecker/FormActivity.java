@@ -31,9 +31,9 @@ import java.io.OutputStreamWriter;
 public class FormActivity extends AppCompatActivity {
 
     EditText title, description, author, downloadlink,
-            icon, promo, screenshot_1, screenshot_2,
-            screenshot_3, googleplus, version, donatedownload,
-            donateversion, wallpaper, pluginversion;
+            backupdownloadlink, icon, promo, screenshot_1,
+            screenshot_2, screenshot_3, googleplus, version,
+            donatedownload, backupdonatedownload, donateversion, wallpaper, pluginversion;
 
     CheckBox lollipopsupport, msupport, basicrrolollipop, basicrrom,
             layerstype2lollipop, layerstype3, layerstype3m, touchwiz,
@@ -44,10 +44,10 @@ public class FormActivity extends AppCompatActivity {
 
     Button generate;
 
-    String s_title, s_description, s_author, s_author2, s_downloadlink,
-            s_icon, s_promo, s_screenshot_1, s_screenshot_2,
-            s_screenshot_3, s_googleplus, s_version, s_donatedownload,
-            s_donateversion, s_wallpaper, s_pluginversion;
+    String s_title, s_description, s_author, s_author2,
+            s_downloadlink, s_backupdownloadlink, s_icon, s_promo,
+            s_screenshot_1, s_screenshot_2, s_screenshot_3, s_googleplus,
+            s_version, s_donatedownload, s_backupdonatedownload, s_donateversion, s_wallpaper, s_pluginversion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,7 @@ public class FormActivity extends AppCompatActivity {
         description = (EditText) findViewById(R.id.description);
         author = (EditText) findViewById(R.id.author);
         downloadlink = (EditText) findViewById(R.id.downloadlink);
+        backupdownloadlink = (EditText) findViewById(R.id.backupdownloadlink);
         icon = (EditText) findViewById(R.id.icon);
         promo = (EditText) findViewById(R.id.promo);
         screenshot_1 = (EditText) findViewById(R.id.screenshot_1);
@@ -72,6 +73,7 @@ public class FormActivity extends AppCompatActivity {
         googleplus = (EditText) findViewById(R.id.googleplus);
         version = (EditText) findViewById(R.id.version);
         donatedownload = (EditText) findViewById(R.id.donatedownload);
+        backupdonatedownload = (EditText) findViewById(R.id.backupdonatedownload);
         donateversion = (EditText) findViewById(R.id.donateversion);
         wallpaper = (EditText) findViewById(R.id.wallpaper);
         pluginversion = (EditText) findViewById(R.id.pluginversion);
@@ -153,6 +155,11 @@ public class FormActivity extends AppCompatActivity {
         } else {
             s_downloadlink = "false";
         }
+        if (backupdownloadlink.getText().toString().trim().length() > 0) {
+            s_backupdownloadlink = backupdownloadlink.getText().toString();
+        } else {
+            s_backupdownloadlink = "false";
+        }
         if (icon.getText().toString().trim().length() > 0) {
             s_icon = icon.getText().toString();
         } else {
@@ -192,6 +199,11 @@ public class FormActivity extends AppCompatActivity {
             s_donatedownload = donatedownload.getText().toString();
         } else {
             s_donatedownload = "false";
+        }
+        if (backupdonatedownload.getText().toString().trim().length() > 0) {
+            s_backupdonatedownload = backupdonatedownload.getText().toString();
+        } else {
+            s_backupdonatedownload = "false";
         }
         if (donateversion.getText().toString().trim().length() > 0) {
             s_donateversion = donateversion.getText().toString();
@@ -237,6 +249,7 @@ public class FormActivity extends AppCompatActivity {
         writer.name("description").value(s_description);
         writer.name("author").value(s_author);
         writer.name("link").value(s_downloadlink);
+        writer.name("backup_link").value(s_backupdownloadlink);
         writer.name("icon").value(s_icon);
         writer.name("promo").value(s_promo);
         writer.name("screenshot_1").value(s_screenshot_1);
@@ -245,6 +258,7 @@ public class FormActivity extends AppCompatActivity {
         writer.name("googleplus").value(s_googleplus);
         writer.name("version").value(s_version);
         writer.name("donate_link").value(s_donatedownload);
+        writer.name("backup_donate_link").value(s_backupdonatedownload);
         writer.name("donate_version").value(s_donateversion);
         writer.name("bootani").value(s_bootanimation);
         writer.name("font").value(s_font);

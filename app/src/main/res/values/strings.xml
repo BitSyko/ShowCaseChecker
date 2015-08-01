@@ -42,6 +42,7 @@
     <string name="description">Description</string>
     <string name="author">Author</string>
     <string name="downloadlink">Download Link</string>
+    <string name="backupdownloadlink">Backup Download Link</string>
     <string name="icon">Icon H=256 x W=256</string>
     <string name="promo">Promo Image W=1598 x H=10526</string>
     <string name="screenshot_1">Screenshot 1 H=1920</string>
@@ -50,6 +51,7 @@
     <string name="googleplus">Google+ Post</string>
     <string name="version2">Version Number</string>
     <string name="donatedownload">Donate Version Download Link</string>
+    <string name="backupdonatedownload">Backup Donate Version Download Link</string>
     <string name="pluginversion">Plugin Version</string>
     <string name="donateversion">Version Number For Donate Theme If You Have</string>
     <string name="wallpaper">Wallpaper</string>
