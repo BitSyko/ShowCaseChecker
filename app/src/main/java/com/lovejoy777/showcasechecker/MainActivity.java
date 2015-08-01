@@ -1,18 +1,23 @@
 package com.lovejoy777.showcasechecker;
 
+import android.app.Activity;
 import android.app.ActivityOptions;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,17 +25,19 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.nononsenseapps.filepicker.FilePickerActivity;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     CardView card1, card2;
     EditText ETJson;
     Button button;
-
-
+    private static final int CODE_SD = 0;
+    String etjson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         card1 = (CardView) findViewById(R.id.CardView1);
         card2 = (CardView) findViewById(R.id.CardView2);
-        ETJson = (EditText) findViewById(R.id.ettextview1);
+        //ETJson = (EditText) findViewById(R.id.ettextview1);
         button = (Button) findViewById(R.id.button);
 
         card1.setOnClickListener(new View.OnClickListener() {
@@ -57,29 +64,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(formactivity, bndlanimation);
             }
         });
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String etjson = ETJson.getText().toString();
-
-                File dir1 = new File(etjson);
-                if (dir1.exists()) {
-
-                    savePrefs("etjson", etjson);
-
-                    Intent freeactivity = new Intent(MainActivity.this, Screen1Free.class);
-
-                    Bundle bndlanimation =
-                            ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
-                    startActivity(freeactivity, bndlanimation);
-                } else {
-
-                    Toast.makeText(getApplicationContext(), "enter a valid path", Toast.LENGTH_LONG).show();
-
-
-                }
+                // This always works
+                Intent i = new Intent(MainActivity.this, FilePickerActivity.class);
+                i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
+                i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
+                i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
+                i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
+                startActivityForResult(i, CODE_SD);
             }
         });
 
@@ -96,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     private void alertDialog( String message ) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
         Drawable icon = ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_info_white_24dp).mutate();
-        icon.setColorFilter(getResources().getColor(R.color.textColorPrimary), PorterDuff.Mode.MULTIPLY );
+        icon.setColorFilter(getResources().getColor(R.color.textColorPrimary), PorterDuff.Mode.MULTIPLY);
         dialog.setTitle("Instructions")
                 .setIcon(icon)
                 .setMessage(message)
@@ -129,5 +123,57 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.back2, R.anim.back1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CODE_SD && resultCode == Activity.RESULT_OK) {
+            if (data.getBooleanExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false)) {
+                // For JellyBean and above
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    ClipData clip = data.getClipData();
+
+                    if (clip != null) {
+                        for (int i = 0; i < clip.getItemCount(); i++) {
+                            Uri uri = clip.getItemAt(i).getUri();
+                            etjson = uri.toString();
+                            file();
+                        }
+                    }
+                    // For Ice Cream Sandwich
+                } else {
+                    ArrayList<String> paths = data.getStringArrayListExtra
+                            (FilePickerActivity.EXTRA_PATHS);
+
+                    if (paths != null) {
+                        for (String path: paths) {
+                            Uri uri = Uri.parse(path);
+                            etjson = uri.toString();
+                            file();
+                        }
+                    }
+                }
+
+            } else {
+                Uri uri = data.getData();
+                etjson = uri.toString();
+                file();
+            }
+        }
+    }
+
+    public void file(){
+        String etjson2 = etjson.replace("file:///storage/emulated/0/","/sdcard/");
+        File dir1 = new File(etjson2);
+        if (dir1.exists()) {
+
+            savePrefs("etjson", etjson2);
+
+            Intent freeactivity = new Intent(MainActivity.this, Screen1Free.class);
+
+            Bundle bndlanimation =
+                    ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
+            startActivity(freeactivity, bndlanimation);
+        }
     }
 }
