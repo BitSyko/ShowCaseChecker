@@ -25,17 +25,23 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.nononsenseapps.filepicker.FilePickerActivity;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     CardView card1, card2;
     EditText ETJson;
-    Button button;
+    Button button1, button2;
     private static final int CODE_SD = 0;
     String etjson;
 
@@ -53,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         card1 = (CardView) findViewById(R.id.CardView1);
         card2 = (CardView) findViewById(R.id.CardView2);
         //ETJson = (EditText) findViewById(R.id.ettextview1);
-        button = (Button) findViewById(R.id.button);
+        button1 = (Button) findViewById(R.id.button);
+        button2 = (Button) findViewById(R.id.button2);
 
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,16 +71,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(formactivity, bndlanimation);
             }
         });
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // This always works
                 Intent i = new Intent(MainActivity.this, FilePickerActivity.class);
                 i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
                 i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
                 i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
                 i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
                 startActivityForResult(i, CODE_SD);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                concat();
             }
         });
 
@@ -176,4 +188,72 @@ public class MainActivity extends AppCompatActivity {
             startActivity(freeactivity, bndlanimation);
         }
     }
+    public String JsonConcat1() {
+        String concatjson = null;
+        try {
+            File myFile = new File("/sdcard/1.json");
+            InputStream is = new FileInputStream(myFile);
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            concatjson = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return concatjson;
+    }
+
+    public String JsonConcat2() {
+        String concatjson2 = null;
+        try {
+            File myFile = new File("/sdcard/2.json");
+            InputStream is = new FileInputStream(myFile);
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            concatjson2 = new String(buffer, "UTF-8");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return concatjson2;
+    }
+
+    public void concat(){
+        try {
+            File myFile = new File("/sdcard/concat.json");
+            myFile.createNewFile();
+            FileOutputStream fOut = new FileOutputStream(myFile);
+            OutputStreamWriter outWriter =
+                    new OutputStreamWriter(fOut);
+            outWriter.append(JsonConcat1() + ",");
+            outWriter.append("\r\n");
+            outWriter.append(JsonConcat2());
+            outWriter.close();
+            fOut.close();
+            Toast.makeText(getBaseContext(),
+                    "Done writing /sdcard/concat.json",
+                    Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(getBaseContext(), e.getMessage(),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

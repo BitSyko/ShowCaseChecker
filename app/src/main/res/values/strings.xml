@@ -26,13 +26,14 @@
         \nMake sure to click the generate button at the bottom of the form.
         \nThen enter the file path, /sdcard/Authors_Name.
         \nfile name spaces are substituted with underscores.
-        \nThen click the Test File button.</string>
+        \nThen click the Test File button.
+    </string>
 
     <!-- MAIN SCREEN CARD TEXT -->
     <string name="layersthemestitle">Layers Themes</string>
     <string name="card1header">Generate Layers Json File</string>
     <string name="card1subtext">Click Me ¯\\_(ツ)_/¯</string>
-    <string name="card2header">Select Json File</string>
+    <string name="card2header">Test Json File</string>
     <string name="card2subtext">Enter Json Path Below</string>
     <string name="noneplaystorecard3header">Create Your Json File</string>
     <string name="noneplaystorecard3">fill out a simple form</string>
