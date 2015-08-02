@@ -40,11 +40,11 @@ public class FormActivity extends AppCompatActivity {
             lg, sense, xperia, asuszenui,
             hdpi, mdpi, xhdpi, xxhdpi,
             xxxhdpi, free, donate, paid,
-            doesitneedupdating, willyoubeupdating, bootanimation, font;
+            doesitneedupdating, willyoubeupdating, bootanimation, font, iconpack;
 
     Button generate;
 
-    String s_title, s_description, s_author, s_author2,
+    String s_title, s_title2, s_description, s_author,
             s_downloadlink, s_backupdownloadlink, s_icon, s_promo,
             s_screenshot_1, s_screenshot_2, s_screenshot_3, s_googleplus,
             s_version, s_donatedownload, s_backupdonatedownload, s_donateversion, s_wallpaper, s_pluginversion;
@@ -102,6 +102,7 @@ public class FormActivity extends AppCompatActivity {
         willyoubeupdating = (CheckBox) findViewById(R.id.willyoubeupdating);
         bootanimation = (CheckBox) findViewById(R.id.bootanimation);
         font = (CheckBox) findViewById(R.id.font);
+        iconpack = (CheckBox) findViewById(R.id.iconpack);
 
         generate = (Button) findViewById(R.id.generate);
     }
@@ -110,17 +111,17 @@ public class FormActivity extends AppCompatActivity {
         if (author.getText().toString().trim().length() > 0) {
             String nospace = author.getText().toString();
             nospace = nospace.replaceAll(" ", "_");
-            s_author2 = nospace;
+            s_title2 = nospace;
             //s_author = author.getText().toString();
         } else {
-            s_author2 = "false";
+            s_title2 = "false";
         }
-        File file = new File(Environment.getExternalStorageDirectory(), s_author2 + ".json");
+        File file = new File(Environment.getExternalStorageDirectory(), s_title2 + ".json");
         try {
             FileOutputStream out = new FileOutputStream(file);
             writeJson(out);
             View coordinatorLayoutView = findViewById(R.id.snackbar);
-            Snackbar.make(coordinatorLayoutView, "Created /sdcard/" + s_author2 + ".json", Snackbar.LENGTH_LONG)
+            Snackbar.make(coordinatorLayoutView, "Created /sdcard/" + s_title2 + ".json", Snackbar.LENGTH_LONG)
                     .show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -244,6 +245,7 @@ public class FormActivity extends AppCompatActivity {
         String s_willyoubeupdating = String.valueOf(willyoubeupdating.isChecked());
         String s_bootanimation = String.valueOf(bootanimation.isChecked());
         String s_font = String.valueOf(font.isChecked());
+        String s_iconpack = String.valueOf(iconpack.isChecked());
 
         writer.name("title").value(s_title);
         writer.name("description").value(s_description);
@@ -286,6 +288,7 @@ public class FormActivity extends AppCompatActivity {
         writer.name("paid").value(s_paid);
         writer.name("needs_update").value(s_doesitneedupdating);
         writer.name("will_update").value(s_willyoubeupdating);
+        writer.name("iconpack").value(s_iconpack);
         writer.endObject();
         writer.close();
     }

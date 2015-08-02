@@ -81,6 +81,7 @@
     <string name="willyoubeupdating">Will You Be Updating</string>
     <string name="bootanimation">Boot Animation</string>
     <string name="font">Font</string>
+    <string name="iconpack">Icon Pack</string>
     <!-- Json Form Button -->
     <string name="send">Generate Json</string>
 </resources>
