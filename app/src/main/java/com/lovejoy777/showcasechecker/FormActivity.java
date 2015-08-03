@@ -1,10 +1,13 @@
 package com.lovejoy777.showcasechecker;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.ParseException;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -19,12 +22,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+
 /**
  * Created by wh0_cares on 7/30/15.
  */
@@ -105,14 +117,20 @@ public class FormActivity extends AppCompatActivity {
         iconpack = (CheckBox) findViewById(R.id.iconpack);
 
         generate = (Button) findViewById(R.id.generate);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        String b2 = sp.getString("button22", "false");
+        if (b2.equals("true")) {
+            b2 = "false";
+            savePrefs("button22", b2);
+        }
     }
 
     public void send(View v) {
-        if (author.getText().toString().trim().length() > 0) {
-            String nospace = author.getText().toString();
+        if (title.getText().toString().trim().length() > 0) {
+            String nospace = title.getText().toString();
             nospace = nospace.replaceAll(" ", "_");
             s_title2 = nospace;
-            //s_author = author.getText().toString();
         } else {
             s_title2 = "false";
         }
@@ -332,5 +350,64 @@ public class FormActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.back2, R.anim.back1);
+    }
+
+    public void editJson() {
+
+        try {
+            String sampleJson = Environment.getExternalStorageDirectory() + "/sample.json";
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+            String etjson = sp.getString("etjson", sampleJson);
+
+            Toast.makeText(getApplicationContext(), etjson, Toast.LENGTH_LONG).show();
+
+
+            File testjson = new File(etjson);
+            FileInputStream stream = new FileInputStream(testjson);
+            String jString = null;
+            try {
+                FileChannel fc = stream.getChannel();
+                MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+                jString = Charset.defaultCharset().decode(bb).toString();
+            }
+            finally {
+                stream.close();
+            }
+
+            JSONObject object = new JSONObject(jString);
+
+            title.setText(object.getString("title"));
+            description.setText(object.getString("description"));
+            author.setText(object.getString("author"));
+            downloadlink.setText(object.getString("link"));
+            backupdownloadlink.setText(object.getString("backup_link"));
+            icon.setText(object.getString("icon"));
+            promo.setText(object.getString("promo"));
+            screenshot_1.setText(object.getString("screenshot_1"));
+            screenshot_2.setText(object.getString("screenshot_2"));
+            screenshot_3.setText(object.getString("screenshot_3"));
+            googleplus.setText(object.getString("googleplus"));
+            version.setText(object.getString("version"));
+            donatedownload.setText(object.getString("donate_link"));
+            backupdonatedownload.setText(object.getString("donate_link"));
+            donateversion.setText(object.getString("donate_version"));
+            wallpaper.setText(object.getString("wallpaper"));
+            pluginversion.setText(object.getString("plugin_version"));
+            //TODO Get checkbox strings if the string equals true set checkbox to true
+            //lollipopsupport.setChecked(true);
+
+        } catch (ParseException e1) {
+            e1.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void savePrefs(String key, String value) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString(key, value);
+        edit.commit();
     }
 }

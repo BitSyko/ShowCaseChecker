@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     CardView card1, card2;
     EditText ETJson;
-    Button button1;
+    Button button1, button2;
     private static final int CODE_SD = 0;
-    String etjson;
-    String etjson2;
+    String etjson, etjson2;
+    String button11, button22 = "false";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         card2 = (CardView) findViewById(R.id.CardView2);
         //ETJson = (EditText) findViewById(R.id.ettextview1);
         button1 = (Button) findViewById(R.id.button);
+        button2 = (Button) findViewById(R.id.button2);
 
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,21 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
                 i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
                 startActivityForResult(i, CODE_SD);
+                button11 = "true";
+                savePrefs("button11", button11);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FilePickerActivity.class);
+                i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
+                i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
+                i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
+                i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
+                startActivityForResult(i, CODE_SD);
+                button22 = "true";
+                savePrefs("button22", button22);
             }
         });
 
@@ -127,19 +143,40 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CODE_SD && resultCode == Activity.RESULT_OK) {
                 Uri uri = data.getData();
                 etjson = uri.toString();
+            if (button11.equals("true")) {
+                //Do stuff
+            }
                 file();
         }
     }
 
     public void file(){
-        String etjson2 = etjson.replace("file:///storage/emulated/0/","/sdcard/");
-        File dir1 = new File(etjson2);
-        if (dir1.exists()) {
-            savePrefs("etjson", etjson2);
-            Intent freeactivity = new Intent(MainActivity.this, Screen1Free.class);
-            Bundle bndlanimation =
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        String b1 = sp.getString("button11", "false");
+        String b2 = sp.getString("button22", "false");
+        if (b1.equals("true")) {
+            etjson2 = etjson.replace("file:///storage/emulated/0/","/sdcard/");
+            File dir1 = new File(etjson2);
+            if (dir1.exists()) {
+                savePrefs("etjson", etjson2);
+                Intent freeactivity = new Intent(MainActivity.this, Screen1Free.class);
+                Bundle bndlanimation =
                     ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
-            startActivity(freeactivity, bndlanimation);
+                startActivity(freeactivity, bndlanimation);
+            }
+            button11 = "false";
+            savePrefs("button11", button11);
+        }
+        if (b2.equals("true")) {
+            etjson2 = etjson.replace("file:///storage/emulated/0/","/sdcard/");
+            File dir1 = new File(etjson2);
+            if (dir1.exists()) {
+                savePrefs("etjson", etjson2);
+                Intent formactivity = new Intent(MainActivity.this, FormActivity.class);
+                Bundle bndlanimation =
+                        ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
+                startActivity(formactivity, bndlanimation);
+            }
         }
     }
 }
