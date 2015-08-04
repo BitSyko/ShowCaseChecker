@@ -430,7 +430,7 @@ public class FormActivity extends AppCompatActivity {
             {
                 xperia.setChecked(true);
             }
-            if (object.getString("asuszenui").equals("true"))
+            if (object.getString("zenui").equals("true"))
             {
                 asuszenui.setChecked(true);
             }
