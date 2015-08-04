@@ -66,27 +66,27 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                button11 = "true";
+                savePrefs("button11", button11);
                 Intent i = new Intent(MainActivity.this, FilePickerActivity.class);
                 i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
                 i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
                 i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
                 i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
                 startActivityForResult(i, CODE_SD);
-                button11 = "true";
-                savePrefs("button11", button11);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                button22 = "true";
+                savePrefs("button22", button22);
                 Intent i = new Intent(MainActivity.this, FilePickerActivity.class);
                 i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
                 i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
                 i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
                 i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
                 startActivityForResult(i, CODE_SD);
-                button22 = "true";
-                savePrefs("button22", button22);
             }
         });
 
@@ -143,9 +143,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CODE_SD && resultCode == Activity.RESULT_OK) {
                 Uri uri = data.getData();
                 etjson = uri.toString();
-            if (button11.equals("true")) {
-                //Do stuff
-            }
                 file();
         }
     }

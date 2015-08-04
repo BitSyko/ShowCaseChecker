@@ -45,7 +45,7 @@ public class FormActivity extends AppCompatActivity {
     EditText title, description, author, downloadlink,
             backupdownloadlink, icon, promo, screenshot_1,
             screenshot_2, screenshot_3, googleplus, version,
-            donatedownload, backupdonatedownload, donateversion, wallpaper, pluginversion;
+            donatedownload, donateversion, wallpaper, pluginversion;
 
     CheckBox lollipopsupport, msupport, basicrrolollipop, basicrrom,
             layerstype2lollipop, layerstype3, layerstype3m, touchwiz,
@@ -59,7 +59,7 @@ public class FormActivity extends AppCompatActivity {
     String s_title, s_title2, s_description, s_author,
             s_downloadlink, s_backupdownloadlink, s_icon, s_promo,
             s_screenshot_1, s_screenshot_2, s_screenshot_3, s_googleplus,
-            s_version, s_donatedownload, s_backupdonatedownload, s_donateversion, s_wallpaper, s_pluginversion;
+            s_version, s_donatedownload, s_donateversion, s_wallpaper, s_pluginversion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +85,6 @@ public class FormActivity extends AppCompatActivity {
         googleplus = (EditText) findViewById(R.id.googleplus);
         version = (EditText) findViewById(R.id.version);
         donatedownload = (EditText) findViewById(R.id.donatedownload);
-        backupdonatedownload = (EditText) findViewById(R.id.backupdonatedownload);
         donateversion = (EditText) findViewById(R.id.donateversion);
         wallpaper = (EditText) findViewById(R.id.wallpaper);
         pluginversion = (EditText) findViewById(R.id.pluginversion);
@@ -123,6 +122,8 @@ public class FormActivity extends AppCompatActivity {
         if (b2.equals("true")) {
             b2 = "false";
             savePrefs("button22", b2);
+            editJson();
+            getSupportActionBar().setTitle(R.string.editjson);
         }
     }
 
@@ -219,11 +220,6 @@ public class FormActivity extends AppCompatActivity {
         } else {
             s_donatedownload = "false";
         }
-        if (backupdonatedownload.getText().toString().trim().length() > 0) {
-            s_backupdonatedownload = backupdonatedownload.getText().toString();
-        } else {
-            s_backupdonatedownload = "false";
-        }
         if (donateversion.getText().toString().trim().length() > 0) {
             s_donateversion = donateversion.getText().toString();
         } else {
@@ -278,7 +274,6 @@ public class FormActivity extends AppCompatActivity {
         writer.name("googleplus").value(s_googleplus);
         writer.name("version").value(s_version);
         writer.name("donate_link").value(s_donatedownload);
-        writer.name("backup_donate_link").value(s_backupdonatedownload);
         writer.name("donate_version").value(s_donateversion);
         writer.name("bootani").value(s_bootanimation);
         writer.name("font").value(s_font);
@@ -361,7 +356,6 @@ public class FormActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), etjson, Toast.LENGTH_LONG).show();
 
-
             File testjson = new File(etjson);
             FileInputStream stream = new FileInputStream(testjson);
             String jString = null;
@@ -389,13 +383,108 @@ public class FormActivity extends AppCompatActivity {
             googleplus.setText(object.getString("googleplus"));
             version.setText(object.getString("version"));
             donatedownload.setText(object.getString("donate_link"));
-            backupdonatedownload.setText(object.getString("donate_link"));
             donateversion.setText(object.getString("donate_version"));
             wallpaper.setText(object.getString("wallpaper"));
             pluginversion.setText(object.getString("plugin_version"));
-            //TODO Get checkbox strings if the string equals true set checkbox to true
-            //lollipopsupport.setChecked(true);
-
+            if (object.getString("for_L").equals("true"))
+            {
+                lollipopsupport.setChecked(true);
+            }
+            if (object.getString("for_M").equals("true"))
+            {
+                msupport.setChecked(true);
+            }
+            if (object.getString("basic").equals("true"))
+            {
+                basicrrolollipop.setChecked(true);
+            }
+            if (object.getString("basic_m").equals("true"))
+            {
+                basicrrom.setChecked(true);
+            }
+            if (object.getString("type2").equals("true"))
+            {
+                layerstype2lollipop.setChecked(true);
+            }
+            if (object.getString("type3").equals("true"))
+            {
+                layerstype3.setChecked(true);
+            }
+            if (object.getString("type3_m").equals("true"))
+            {
+                layerstype3m.setChecked(true);
+            }
+            if (object.getString("touchwiz").equals("true"))
+            {
+                touchwiz.setChecked(true);
+            }
+            if (object.getString("lg").equals("true"))
+            {
+                lg.setChecked(true);
+            }
+            if (object.getString("sense").equals("true"))
+            {
+                sense.setChecked(true);
+            }
+            if (object.getString("xperia").equals("true"))
+            {
+                xperia.setChecked(true);
+            }
+            if (object.getString("asuszenui").equals("true"))
+            {
+                asuszenui.setChecked(true);
+            }
+            if (object.getString("hdpi").equals("true"))
+            {
+                hdpi.setChecked(true);
+            }
+            if (object.getString("mdpi").equals("true"))
+            {
+                mdpi.setChecked(true);
+            }
+            if (object.getString("xhdpi").equals("true"))
+            {
+                xhdpi.setChecked(true);
+            }
+            if (object.getString("xxhdpi").equals("true"))
+            {
+                xxhdpi.setChecked(true);
+            }
+            if (object.getString("xxxhdpi").equals("true"))
+            {
+                xxxhdpi.setChecked(true);
+            }
+            if (object.getString("free").equals("true"))
+            {
+                free.setChecked(true);
+            }
+            if (object.getString("donate").equals("true"))
+            {
+                donate.setChecked(true);
+            }
+            if (object.getString("paid").equals("true"))
+            {
+                paid.setChecked(true);
+            }
+            if (object.getString("needs_update").equals("true"))
+            {
+                doesitneedupdating.setChecked(true);
+            }
+            if (object.getString("will_update").equals("true"))
+            {
+                willyoubeupdating.setChecked(true);
+            }
+            if (object.getString("bootani").equals("true"))
+            {
+                bootanimation.setChecked(true);
+            }
+            if (object.getString("font").equals("true"))
+            {
+                font.setChecked(true);
+            }
+            if (object.getString("iconpack").equals("true")) {
+                iconpack.setChecked(true);
+            }
         } catch (ParseException e1) {
             e1.printStackTrace();
         } catch (IOException e) {

@@ -6,6 +6,7 @@
 
     <string name="test1">Test 1</string>
     <string name="formactivity">Generate Layers Json</string>
+    <string name="editjson">Edit Layers Json</string>
     <string name="paid">Paid Layers</string>
     <string name="donate">Donate Layers</string>
     <string name="details">Test 2</string>
@@ -52,7 +53,6 @@
     <string name="googleplus">Google+ Post</string>
     <string name="version2">Version Number</string>
     <string name="donatedownload">Donate Version Download Link</string>
-    <string name="backupdonatedownload">Backup Donate Version Download Link</string>
     <string name="pluginversion">Plugin Version</string>
     <string name="donateversion">Version Number For Donate Theme If You Have</string>
     <string name="wallpaper">Wallpaper</string>
