@@ -45,7 +45,7 @@ public class FormActivity extends AppCompatActivity {
     EditText title, description, author, downloadlink,
             backupdownloadlink, icon, promo, screenshot_1,
             screenshot_2, screenshot_3, googleplus, version,
-            donatedownload, donateversion, wallpaper, pluginversion;
+            donatedownload, donateversion, wallpaper, pluginversion, color;
 
     CheckBox lollipopsupport, msupport, basicrrolollipop, basicrrom,
             layerstype2lollipop, layerstype3, layerstype3m, touchwiz,
@@ -59,7 +59,7 @@ public class FormActivity extends AppCompatActivity {
     String s_title, s_title2, s_description, s_author,
             s_downloadlink, s_backupdownloadlink, s_icon, s_promo,
             s_screenshot_1, s_screenshot_2, s_screenshot_3, s_googleplus,
-            s_version, s_donatedownload, s_donateversion, s_wallpaper, s_pluginversion;
+            s_version, s_donatedownload, s_donateversion, s_wallpaper, s_pluginversion, s_color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +88,7 @@ public class FormActivity extends AppCompatActivity {
         donateversion = (EditText) findViewById(R.id.donateversion);
         wallpaper = (EditText) findViewById(R.id.wallpaper);
         pluginversion = (EditText) findViewById(R.id.pluginversion);
+        color = (EditText) findViewById(R.id.color);
 
         lollipopsupport = (CheckBox) findViewById(R.id.lollipopsupport);
         msupport = (CheckBox) findViewById(R.id.msupport);
@@ -124,6 +125,7 @@ public class FormActivity extends AppCompatActivity {
             savePrefs("button22", b2);
             editJson();
             getSupportActionBar().setTitle(R.string.editjson);
+            generate.setText(getString(R.string.edit));
         }
     }
 
@@ -235,6 +237,11 @@ public class FormActivity extends AppCompatActivity {
         } else {
             s_pluginversion = "false";
         }
+        if (color.getText().toString().trim().length() > 0) {
+            s_color = color.getText().toString();
+        } else {
+            s_color = "0";
+        }
         String s_lollipopsupport = String.valueOf(lollipopsupport.isChecked());
         String s_msupport = String.valueOf(msupport.isChecked());
         String s_basicrrolollipop = String.valueOf(basicrrolollipop.isChecked());
@@ -279,6 +286,7 @@ public class FormActivity extends AppCompatActivity {
         writer.name("font").value(s_font);
         writer.name("wallpaper").value(s_wallpaper);
         writer.name("plugin_version").value(s_pluginversion);
+        writer.name("toolbar_background_color").value(s_color);
         writer.name("for_L").value(s_lollipopsupport);
         writer.name("for_M").value(s_msupport);
         writer.name("basic").value(s_basicrrolollipop);
@@ -386,6 +394,7 @@ public class FormActivity extends AppCompatActivity {
             donateversion.setText(object.getString("donate_version"));
             wallpaper.setText(object.getString("wallpaper"));
             pluginversion.setText(object.getString("plugin_version"));
+            color.setText(object.getString("toolbar_background_color"));
             if (object.getString("for_L").equals("true"))
             {
                 lollipopsupport.setChecked(true);

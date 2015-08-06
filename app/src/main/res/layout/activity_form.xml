@@ -198,6 +198,16 @@
                     android:hint="@string/wallpaper"
                     />
             </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/color"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/color"
+                    />
+            </android.support.design.widget.TextInputLayout>
             <CheckBox
                 android:id="@+id/lollipopsupport"
                 android:layout_width="wrap_content"

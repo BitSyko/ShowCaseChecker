@@ -47,15 +47,16 @@
     <string name="backupdownloadlink">Backup Download Link</string>
     <string name="icon">Icon H=256 x W=256</string>
     <string name="promo">Promo Image W=1598 x H=10526</string>
-    <string name="screenshot_1">Screenshot 1 H=1920</string>
-    <string name="screenshot_2">Screenshot 2 H=1920</string>
-    <string name="screenshot_3">Screenshot 3 H=1920</string>
+    <string name="screenshot_1">Screenshot 1 H=1920 include a backup link after a comma</string>
+    <string name="screenshot_2">Screenshot 2 H=1920 include a backup link after a comma</string>
+    <string name="screenshot_3">Screenshot 3 H=1920 include a backup link after a comma</string>
     <string name="googleplus">Google+ Post</string>
     <string name="version2">Version Number</string>
     <string name="donatedownload">Donate Version Download Link</string>
     <string name="pluginversion">Plugin Version</string>
     <string name="donateversion">Version Number For Donate Theme If You Have</string>
     <string name="wallpaper">Wallpaper</string>
+    <string name="color">Showcase Toolbar Color Hex ie: 212121</string>
     <!-- Json Form CheckBox -->
     <string name="lollipopsupport">Lollipop Support</string>
     <string name="msupport">M Support</string>
@@ -84,4 +85,5 @@
     <string name="iconpack">Icon Pack</string>
     <!-- Json Form Button -->
     <string name="send">Generate Json</string>
+    <string name="edit">Save Edited Json</string>
 </resources>
