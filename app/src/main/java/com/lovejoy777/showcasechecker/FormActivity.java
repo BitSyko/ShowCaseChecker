@@ -118,14 +118,15 @@ public class FormActivity extends AppCompatActivity {
 
         generate = (Button) findViewById(R.id.generate);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        String b2 = sp.getString("button22", "false");
-        if (b2.equals("true")) {
-            b2 = "false";
-            savePrefs("button22", b2);
-            editJson();
-            getSupportActionBar().setTitle(R.string.editjson);
-            generate.setText(getString(R.string.edit));
+        Bundle extras = getIntent().getExtras();
+        if(extras !=null)
+        {
+            int requestCode = extras.getInt("code");
+            if (requestCode == 1){
+                editJson();
+                getSupportActionBar().setTitle(R.string.editjson);
+                generate.setText(getString(R.string.edit));
+            }
         }
     }
 
@@ -501,11 +502,5 @@ public class FormActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-    public void savePrefs(String key, String value) {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor edit = sp.edit();
-        edit.putString(key, value);
-        edit.commit();
     }
 }
