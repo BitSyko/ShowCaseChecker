@@ -8,7 +8,6 @@ import android.net.ParseException;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -29,13 +28,13 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 /**
  * Created by wh0_cares on 7/30/15.
@@ -61,6 +60,18 @@ public class FormActivity extends AppCompatActivity {
             s_screenshot_1, s_screenshot_2, s_screenshot_3, s_googleplus,
             s_version, s_donatedownload, s_donateversion, s_wallpaper, s_pluginversion, s_color;
 
+    ArrayList<String> values = new ArrayList<String>();
+
+    public final int[] EditText = { R.id.title, R.id.description, R.id.author, R.id.downloadlink,
+            R.id.backupdownloadlink, R.id.icon, R.id.promo, R.id.screenshot_1, R.id.screenshot_2, R.id.screenshot_3,
+            R.id.googleplus, R.id.version, R.id.donatedownload, R.id.donateversion, R.id.wallpaper, R.id.pluginversion,
+            R.id.color};
+    public final int[] CheckBox = { R.id.lollipopsupport, R.id.msupport, R.id.basicrrolollipop, R.id.basicrrom,
+            R.id.layerstype2lollipop, R.id.layerstype3, R.id.layerstype3m, R.id.touchwiz, R.id.lg, R.id.sense,
+            R.id.xperia, R.id.asuszenui, R.id.hdpi, R.id.mdpi, R.id.xhdpi, R.id.xxhdpi, R.id.xxxhdpi, R.id.free,
+            R.id.donate, R.id.paid, R.id.doesitneedupdating, R.id.willyoubeupdating, R.id.bootanimation, R.id.font, R.id.iconpack};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,50 +82,6 @@ public class FormActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
-        title = (EditText) findViewById(R.id.title);
-        description = (EditText) findViewById(R.id.description);
-        author = (EditText) findViewById(R.id.author);
-        downloadlink = (EditText) findViewById(R.id.downloadlink);
-        backupdownloadlink = (EditText) findViewById(R.id.backupdownloadlink);
-        icon = (EditText) findViewById(R.id.icon);
-        promo = (EditText) findViewById(R.id.promo);
-        screenshot_1 = (EditText) findViewById(R.id.screenshot_1);
-        screenshot_2 = (EditText) findViewById(R.id.screenshot_2);
-        screenshot_3 = (EditText) findViewById(R.id.screenshot_3);
-        googleplus = (EditText) findViewById(R.id.googleplus);
-        version = (EditText) findViewById(R.id.version);
-        donatedownload = (EditText) findViewById(R.id.donatedownload);
-        donateversion = (EditText) findViewById(R.id.donateversion);
-        wallpaper = (EditText) findViewById(R.id.wallpaper);
-        pluginversion = (EditText) findViewById(R.id.pluginversion);
-        color = (EditText) findViewById(R.id.color);
-
-        lollipopsupport = (CheckBox) findViewById(R.id.lollipopsupport);
-        msupport = (CheckBox) findViewById(R.id.msupport);
-        basicrrolollipop = (CheckBox) findViewById(R.id.basicrrolollipop);
-        basicrrom = (CheckBox) findViewById(R.id.basicrrom);
-        layerstype2lollipop = (CheckBox) findViewById(R.id.layerstype2lollipop);
-        layerstype3 = (CheckBox) findViewById(R.id.layerstype3);
-        layerstype3m = (CheckBox) findViewById(R.id.layerstype3m);
-        touchwiz = (CheckBox) findViewById(R.id.touchwiz);
-        lg = (CheckBox) findViewById(R.id.lg);
-        sense = (CheckBox) findViewById(R.id.sense);
-        xperia = (CheckBox) findViewById(R.id.xperia);
-        asuszenui = (CheckBox) findViewById(R.id.asuszenui);
-        hdpi = (CheckBox) findViewById(R.id.hdpi);
-        mdpi = (CheckBox) findViewById(R.id.mdpi);
-        xhdpi = (CheckBox) findViewById(R.id.xhdpi);
-        xxhdpi = (CheckBox) findViewById(R.id.xxhdpi);
-        xxxhdpi = (CheckBox) findViewById(R.id.xxxhdpi);
-        free = (CheckBox) findViewById(R.id.free);
-        donate = (CheckBox) findViewById(R.id.donate);
-        paid = (CheckBox) findViewById(R.id.paid);
-        doesitneedupdating = (CheckBox) findViewById(R.id.doesitneedupdating);
-        willyoubeupdating = (CheckBox) findViewById(R.id.willyoubeupdating);
-        bootanimation = (CheckBox) findViewById(R.id.bootanimation);
-        font = (CheckBox) findViewById(R.id.font);
-        iconpack = (CheckBox) findViewById(R.id.iconpack);
 
         generate = (Button) findViewById(R.id.generate);
 
@@ -131,7 +98,15 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void send(View v) {
-        if (title.getText().toString().trim().length() > 0) {
+        for(int id : EditText){
+            EditText t = (EditText) findViewById(id);
+            values.add(t.getText().toString());
+        }
+        for(int id2 : CheckBox){
+            CheckBox c = (CheckBox) findViewById(id2);
+            values.add(String.valueOf(c.isChecked()));
+        }
+        /*if (title.getText().toString().trim().length() > 0) {
             String nospace = title.getText().toString();
             nospace = nospace.replaceAll(" ", "_");
             s_title2 = nospace;
@@ -147,6 +122,14 @@ public class FormActivity extends AppCompatActivity {
                     .show();
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+        for(int id : EditText){
+            EditText t = (EditText) findViewById(id);
+            values.add(t.getText().toString());
+        }
+        for(int id2 : CheckBox){
+            CheckBox c = (CheckBox) findViewById(id2);
+            values.add(String.valueOf(c.isChecked()));
         }
     }
 
@@ -158,91 +141,24 @@ public class FormActivity extends AppCompatActivity {
 
     public void jsonFinal(JsonWriter writer) throws IOException {
         writer.beginObject();
-        if (title.getText().toString().trim().length() > 0) {
-            s_title = title.getText().toString();
-        } else {
-            s_title = "false";
-        }
-        if (description.getText().toString().trim().length() > 0) {
-            s_description = description.getText().toString();
-        } else {
-            s_description = "false";
-        }
-        if (author.getText().toString().trim().length() > 0) {
-            s_author = author.getText().toString();
-        } else {
-            s_author = "false";
-        }
-        if (downloadlink.getText().toString().trim().length() > 0) {
-            s_downloadlink = downloadlink.getText().toString();
-        } else {
-            s_downloadlink = "false";
-        }
-        if (backupdownloadlink.getText().toString().trim().length() > 0) {
-            s_backupdownloadlink = backupdownloadlink.getText().toString();
-        } else {
-            s_backupdownloadlink = "false";
-        }
-        if (icon.getText().toString().trim().length() > 0) {
-            s_icon = icon.getText().toString();
-        } else {
-            s_icon = "false";
-        }
-        if (promo.getText().toString().trim().length() > 0) {
-            s_promo = promo.getText().toString();
-        } else {
-            s_promo = "false";
-        }
-        if (screenshot_1.getText().toString().trim().length() > 0) {
-            s_screenshot_1 = screenshot_1.getText().toString();
-        } else {
-            s_screenshot_1 = "false";
-        }
-        if (screenshot_2.getText().toString().trim().length() > 0) {
-            s_screenshot_2 = screenshot_2.getText().toString();
-        } else {
-            s_screenshot_2 = "false";
-        }
-        if (screenshot_3.getText().toString().trim().length() > 0) {
-            s_screenshot_3 = screenshot_3.getText().toString();
-        } else {
-            s_screenshot_3 = "false";
-        }
-        if (googleplus.getText().toString().trim().length() > 0) {
-            s_googleplus = googleplus.getText().toString();
-        } else {
-            s_googleplus = "false";
-        }
-        if (version.getText().toString().trim().length() > 0) {
-            s_version = version.getText().toString();
-        } else {
-            s_version = "false";
-        }
-        if (donatedownload.getText().toString().trim().length() > 0) {
-            s_donatedownload = donatedownload.getText().toString();
-        } else {
-            s_donatedownload = "false";
-        }
-        if (donateversion.getText().toString().trim().length() > 0) {
-            s_donateversion = donateversion.getText().toString();
-        } else {
-            s_donateversion = "false";
-        }
-        if (wallpaper.getText().toString().trim().length() > 0) {
-            s_wallpaper = wallpaper.getText().toString();
-        } else {
-            s_wallpaper = "false";
-        }
-        if (pluginversion.getText().toString().trim().length() > 0) {
-            s_pluginversion = pluginversion.getText().toString();
-        } else {
-            s_pluginversion = "false";
-        }
-        if (color.getText().toString().trim().length() > 0) {
-            s_color = color.getText().toString();
-        } else {
-            s_color = "0";
-        }
+        s_title = (title.getText().toString().trim().length() > 0) ? title.getText().toString() : "false";
+        s_description = (description.getText().toString().trim().length() > 0) ? description.getText().toString() : "false";
+        s_author = (author.getText().toString().trim().length() > 0) ? author.getText().toString() : "false";
+        s_downloadlink = (downloadlink.getText().toString().trim().length() > 0) ? downloadlink.getText().toString() : "false";
+        s_backupdownloadlink = (backupdownloadlink.getText().toString().trim().length() > 0) ? backupdownloadlink.getText().toString() : "false";
+        s_icon = (icon.getText().toString().trim().length() > 0) ? icon.getText().toString() : "false";
+        s_promo = (promo.getText().toString().trim().length() > 0) ? promo.getText().toString() : "false";
+        s_screenshot_1 = (screenshot_1.getText().toString().trim().length() > 0) ? screenshot_1.getText().toString() : "false";
+        s_screenshot_2 = (screenshot_2.getText().toString().trim().length() > 0) ? screenshot_2.getText().toString() : "false";
+        s_screenshot_3 = (screenshot_3.getText().toString().trim().length() > 0) ? screenshot_3.getText().toString() : "false";
+        s_googleplus = (googleplus.getText().toString().trim().length() > 0) ? googleplus.getText().toString() : "false";
+        s_version = (version.getText().toString().trim().length() > 0) ? version.getText().toString() : "false";
+        s_donatedownload = (donatedownload.getText().toString().trim().length() > 0) ? donatedownload.getText().toString() : "false";
+        s_donateversion = (donateversion.getText().toString().trim().length() > 0) ? donateversion.getText().toString() : "false";
+        s_wallpaper = (wallpaper.getText().toString().trim().length() > 0) ? wallpaper.getText().toString() : "false";
+        s_pluginversion = (pluginversion.getText().toString().trim().length() > 0) ? pluginversion.getText().toString() : "false";
+        s_color = (color.getText().toString().trim().length() > 0) ? color.getText().toString() : "0";
+
         String s_lollipopsupport = String.valueOf(lollipopsupport.isChecked());
         String s_msupport = String.valueOf(msupport.isChecked());
         String s_basicrrolollipop = String.valueOf(basicrrolollipop.isChecked());
