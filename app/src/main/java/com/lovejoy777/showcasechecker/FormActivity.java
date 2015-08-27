@@ -1,13 +1,12 @@
 package com.lovejoy777.showcasechecker;
 
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +27,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -35,12 +35,12 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by wh0_cares on 7/30/15.
  */
 public class FormActivity extends AppCompatActivity {
-
     EditText title, description, author, downloadlink,
             backupdownloadlink, icon, promo, screenshot_1,
             screenshot_2, screenshot_3, googleplus, version,
@@ -55,12 +55,15 @@ public class FormActivity extends AppCompatActivity {
 
     Button generate;
 
-    String s_title, s_title2, s_description, s_author,
-            s_downloadlink, s_backupdownloadlink, s_icon, s_promo,
-            s_screenshot_1, s_screenshot_2, s_screenshot_3, s_googleplus,
-            s_version, s_donatedownload, s_donateversion, s_wallpaper, s_pluginversion, s_color;
+    String [] strings = new String [] {"title", "description", "author", "link", "backup_link", "icon",
+            "promo", "screenshot_1", "screenshot_2", "screenshot_3", "googleplus", "version", "donate_link",
+            "donate_version", "wallpaper", "plugin_version", "toolbar_background_color", "for_L", "for_M",
+            "basic", "basic_m", "type2", "type3", "type3_m", "touchwiz", "lg", "sense", "xperia", "zenui",
+            "hdpi", "mdpi", "xdpi", "xxhdpi", "xxxhdpi", "free", "donate", "paid", "needs_update", "will_update",
+            "bootani", "font", "iconpack"};
 
-    ArrayList<String> values = new ArrayList<String>();
+    ArrayList<String> values = new ArrayList<String>(Arrays.asList(strings));
+    ArrayList<String> values2 = new ArrayList<String>();
 
     public final int[] EditText = { R.id.title, R.id.description, R.id.author, R.id.downloadlink,
             R.id.backupdownloadlink, R.id.icon, R.id.promo, R.id.screenshot_1, R.id.screenshot_2, R.id.screenshot_3,
@@ -70,7 +73,6 @@ public class FormActivity extends AppCompatActivity {
             R.id.layerstype2lollipop, R.id.layerstype3, R.id.layerstype3m, R.id.touchwiz, R.id.lg, R.id.sense,
             R.id.xperia, R.id.asuszenui, R.id.hdpi, R.id.mdpi, R.id.xhdpi, R.id.xxhdpi, R.id.xxxhdpi, R.id.free,
             R.id.donate, R.id.paid, R.id.doesitneedupdating, R.id.willyoubeupdating, R.id.bootanimation, R.id.font, R.id.iconpack};
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,39 +100,30 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void send(View v) {
+        values2.clear();
         for(int id : EditText){
             EditText t = (EditText) findViewById(id);
-            values.add(t.getText().toString());
+            values2.add((t.getText().toString().trim().length() > 0) ? t.getText().toString() : "false");
         }
         for(int id2 : CheckBox){
             CheckBox c = (CheckBox) findViewById(id2);
-            values.add(String.valueOf(c.isChecked()));
+            values2.add(String.valueOf(c.isChecked()));
         }
-        /*if (title.getText().toString().trim().length() > 0) {
-            String nospace = title.getText().toString();
-            nospace = nospace.replaceAll(" ", "_");
-            s_title2 = nospace;
-        } else {
-            s_title2 = "false";
-        }
-        File file = new File(Environment.getExternalStorageDirectory(), s_title2 + ".json");
+        String title = values2.get(0);
+        title = title.replaceAll(" ", "_");
+        String title2 = title;
+        values2.set(0, title2);
+        File file = new File(Environment.getExternalStorageDirectory(), title2 + ".json");
         try {
             FileOutputStream out = new FileOutputStream(file);
             writeJson(out);
             View coordinatorLayoutView = findViewById(R.id.snackbar);
-            Snackbar.make(coordinatorLayoutView, "Created /sdcard/" + s_title2 + ".json", Snackbar.LENGTH_LONG)
+            Snackbar.make(coordinatorLayoutView, "Created /sdcard/" + title2 + ".json", Snackbar.LENGTH_LONG)
                     .show();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-        for(int id : EditText){
-            EditText t = (EditText) findViewById(id);
-            values.add(t.getText().toString());
         }
-        for(int id2 : CheckBox){
-            CheckBox c = (CheckBox) findViewById(id2);
-            values.add(String.valueOf(c.isChecked()));
-        }
+        //System.out.println("ArrayListValues " + title2);
     }
 
     public void writeJson(OutputStream out) throws IOException {
@@ -141,92 +134,11 @@ public class FormActivity extends AppCompatActivity {
 
     public void jsonFinal(JsonWriter writer) throws IOException {
         writer.beginObject();
-        s_title = (title.getText().toString().trim().length() > 0) ? title.getText().toString() : "false";
-        s_description = (description.getText().toString().trim().length() > 0) ? description.getText().toString() : "false";
-        s_author = (author.getText().toString().trim().length() > 0) ? author.getText().toString() : "false";
-        s_downloadlink = (downloadlink.getText().toString().trim().length() > 0) ? downloadlink.getText().toString() : "false";
-        s_backupdownloadlink = (backupdownloadlink.getText().toString().trim().length() > 0) ? backupdownloadlink.getText().toString() : "false";
-        s_icon = (icon.getText().toString().trim().length() > 0) ? icon.getText().toString() : "false";
-        s_promo = (promo.getText().toString().trim().length() > 0) ? promo.getText().toString() : "false";
-        s_screenshot_1 = (screenshot_1.getText().toString().trim().length() > 0) ? screenshot_1.getText().toString() : "false";
-        s_screenshot_2 = (screenshot_2.getText().toString().trim().length() > 0) ? screenshot_2.getText().toString() : "false";
-        s_screenshot_3 = (screenshot_3.getText().toString().trim().length() > 0) ? screenshot_3.getText().toString() : "false";
-        s_googleplus = (googleplus.getText().toString().trim().length() > 0) ? googleplus.getText().toString() : "false";
-        s_version = (version.getText().toString().trim().length() > 0) ? version.getText().toString() : "false";
-        s_donatedownload = (donatedownload.getText().toString().trim().length() > 0) ? donatedownload.getText().toString() : "false";
-        s_donateversion = (donateversion.getText().toString().trim().length() > 0) ? donateversion.getText().toString() : "false";
-        s_wallpaper = (wallpaper.getText().toString().trim().length() > 0) ? wallpaper.getText().toString() : "false";
-        s_pluginversion = (pluginversion.getText().toString().trim().length() > 0) ? pluginversion.getText().toString() : "false";
-        s_color = (color.getText().toString().trim().length() > 0) ? color.getText().toString() : "0";
-
-        String s_lollipopsupport = String.valueOf(lollipopsupport.isChecked());
-        String s_msupport = String.valueOf(msupport.isChecked());
-        String s_basicrrolollipop = String.valueOf(basicrrolollipop.isChecked());
-        String s_basicrrom = String.valueOf(basicrrom.isChecked());
-        String s_layerstype2lollipop = String.valueOf(layerstype2lollipop.isChecked());
-        String s_layerstype3 = String.valueOf(layerstype3.isChecked());
-        String s_layerstype3m = String.valueOf(layerstype3m.isChecked());
-        String s_touchwiz = String.valueOf(touchwiz.isChecked());
-        String s_lg = String.valueOf(lg.isChecked());
-        String s_sense = String.valueOf(sense.isChecked());
-        String s_xperia = String.valueOf(xperia.isChecked());
-        String s_asuszenui = String.valueOf(asuszenui.isChecked());
-        String s_hdpi = String.valueOf(hdpi.isChecked());
-        String s_mdpi = String.valueOf(mdpi.isChecked());
-        String s_xhdpi = String.valueOf(xhdpi.isChecked());
-        String s_xxhdpi = String.valueOf(xxhdpi.isChecked());
-        String s_xxxhdpi = String.valueOf(xxxhdpi.isChecked());
-        String s_free = String.valueOf(free.isChecked());
-        String s_donate = String.valueOf(donate.isChecked());
-        String s_paid = String.valueOf(paid.isChecked());
-        String s_doesitneedupdating = String.valueOf(doesitneedupdating.isChecked());
-        String s_willyoubeupdating = String.valueOf(willyoubeupdating.isChecked());
-        String s_bootanimation = String.valueOf(bootanimation.isChecked());
-        String s_font = String.valueOf(font.isChecked());
-        String s_iconpack = String.valueOf(iconpack.isChecked());
-
-        writer.name("title").value(s_title);
-        writer.name("description").value(s_description);
-        writer.name("author").value(s_author);
-        writer.name("link").value(s_downloadlink);
-        writer.name("backup_link").value(s_backupdownloadlink);
-        writer.name("icon").value(s_icon);
-        writer.name("promo").value(s_promo);
-        writer.name("screenshot_1").value(s_screenshot_1);
-        writer.name("screenshot_2").value(s_screenshot_2);
-        writer.name("screenshot_3").value(s_screenshot_3);
-        writer.name("googleplus").value(s_googleplus);
-        writer.name("version").value(s_version);
-        writer.name("donate_link").value(s_donatedownload);
-        writer.name("donate_version").value(s_donateversion);
-        writer.name("bootani").value(s_bootanimation);
-        writer.name("font").value(s_font);
-        writer.name("wallpaper").value(s_wallpaper);
-        writer.name("plugin_version").value(s_pluginversion);
-        writer.name("toolbar_background_color").value(s_color);
-        writer.name("for_L").value(s_lollipopsupport);
-        writer.name("for_M").value(s_msupport);
-        writer.name("basic").value(s_basicrrolollipop);
-        writer.name("basic_m").value(s_basicrrom);
-        writer.name("type2").value(s_layerstype2lollipop);
-        writer.name("type3").value(s_layerstype3);
-        writer.name("type3_m").value(s_layerstype3m);
-        writer.name("touchwiz").value(s_touchwiz);
-        writer.name("lg").value(s_lg);
-        writer.name("sense").value(s_sense);
-        writer.name("xperia").value(s_xperia);
-        writer.name("zenui").value(s_asuszenui);
-        writer.name("hdpi").value(s_hdpi);
-        writer.name("mdpi").value(s_mdpi);
-        writer.name("xhdpi").value(s_xhdpi);
-        writer.name("xxhdpi").value(s_xxhdpi);
-        writer.name("xxxhdpi").value(s_xxxhdpi);
-        writer.name("free").value(s_free);
-        writer.name("donate").value(s_donate);
-        writer.name("paid").value(s_paid);
-        writer.name("needs_update").value(s_doesitneedupdating);
-        writer.name("will_update").value(s_willyoubeupdating);
-        writer.name("iconpack").value(s_iconpack);
+        for (int i = 0; i < values.size(); i++) {
+            String json1 = values.get(i);
+            String json2 = values2.get(i);
+            writer.name(json1).value(json2);
+        }
         writer.endObject();
         writer.close();
     }
@@ -273,15 +185,10 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void editJson() {
-
         try {
-            String sampleJson = Environment.getExternalStorageDirectory() + "/sample.json";
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-            String etjson = sp.getString("etjson", sampleJson);
-
-            Toast.makeText(getApplicationContext(), etjson, Toast.LENGTH_LONG).show();
-
-            File testjson = new File(etjson);
+            String file = getIntent().getExtras().getString("file");
+            Toast.makeText(getApplicationContext(), file, Toast.LENGTH_LONG).show();
+            File testjson = new File(file);
             FileInputStream stream = new FileInputStream(testjson);
             String jString = null;
             try {
@@ -294,7 +201,6 @@ public class FormActivity extends AppCompatActivity {
             }
 
             JSONObject object = new JSONObject(jString);
-
             title.setText(object.getString("title"));
             description.setText(object.getString("description"));
             author.setText(object.getString("author"));

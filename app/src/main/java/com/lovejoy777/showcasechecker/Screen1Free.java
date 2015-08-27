@@ -2,11 +2,8 @@ package com.lovejoy777.showcasechecker;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ParseException;
 import android.os.Bundle;
-import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -108,14 +105,9 @@ public class Screen1Free extends AppCompatActivity {
     public void doasync() {
 
         try {
-            String sampleJson = Environment.getExternalStorageDirectory() + "/sample.json";
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-            String etjson = sp.getString("etjson", sampleJson);
-
-            Toast.makeText(getApplicationContext(), etjson, Toast.LENGTH_LONG).show();
-
-
-            File testjson = new File(etjson);
+            String file = getIntent().getExtras().getString("file");
+            Toast.makeText(getApplicationContext(), file, Toast.LENGTH_LONG).show();
+            File testjson = new File(file);
             FileInputStream stream = new FileInputStream(testjson);
             String jString = null;
             try {

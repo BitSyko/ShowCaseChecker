@@ -4,13 +4,11 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.nononsenseapps.filepicker.FilePickerActivity;
 
@@ -32,12 +28,10 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
 
     CardView card1, card2;
-    EditText ETJson;
     Button button1, button2;
     private static final int CODE_SD = 0;
     private static final int CODE_SD2 = 1;
-    String etjson, etjson2;
-    String button11, button22 = "false";
+    String file1, file2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         card1 = (CardView) findViewById(R.id.CardView1);
         card2 = (CardView) findViewById(R.id.CardView2);
-        //ETJson = (EditText) findViewById(R.id.ettextview1);
         button1 = (Button) findViewById(R.id.button);
         button2 = (Button) findViewById(R.id.button2);
-
+        button2.setEnabled(false);
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,14 +82,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     } // ends onCreate
-
-    public void savePrefs(String key, String value) {
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor edit = sp.edit();
-        edit.putString(key, value);
-        edit.commit();
-    }
 
     private void alertDialog( String message ) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
@@ -140,31 +125,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CODE_SD && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
-            etjson = uri.toString();
+            file1 = uri.toString();
             selectedFile();
         } else if (requestCode == CODE_SD2 && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
-            etjson = uri.toString();
+            file2 = uri.toString();
             editFile();
         }
     }
 
     public void selectedFile(){
-            etjson2 = etjson.replace("file:///storage/emulated/0/","/sdcard/");
-            File dir1 = new File(etjson2);
+            String file = file1.replace("file:///storage/emulated/0/", "/sdcard/");
+            File dir1 = new File(file);
             if (dir1.exists()) {
                 Intent freeactivity = new Intent(MainActivity.this, Screen1Free.class);
+                freeactivity.putExtra("file", file);
                 Bundle bndlanimation =
                     ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
                 startActivity(freeactivity, bndlanimation);
             }
     }
     public void editFile(){
-            etjson2 = etjson.replace("file:///storage/emulated/0/","/sdcard/");
-            File dir1 = new File(etjson2);
+            String file = file2.replace("file:///storage/emulated/0/","/sdcard/");
+            File dir1 = new File(file);
             if (dir1.exists()) {
                 Intent formactivity = new Intent(MainActivity.this, FormActivity.class);
                 formactivity.putExtra("code", CODE_SD2);
+                formactivity.putExtra("file", file);
                 Bundle bndlanimation =
                         ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
                 startActivity(formactivity, bndlanimation);
