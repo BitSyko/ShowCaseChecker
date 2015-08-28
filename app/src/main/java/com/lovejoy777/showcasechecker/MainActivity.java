@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         card2 = (CardView) findViewById(R.id.CardView2);
         button1 = (Button) findViewById(R.id.button);
         button2 = (Button) findViewById(R.id.button2);
-        button2.setEnabled(false);
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     } // ends onCreate
 
-    private void alertDialog( String message ) {
+    private void alertDialog(String message) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
         Drawable icon = ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_info_white_24dp).mutate();
         icon.setColorFilter(getResources().getColor(R.color.textColorPrimary), PorterDuff.Mode.MULTIPLY);
@@ -134,27 +133,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void selectedFile(){
-            String file = file1.replace("file:///storage/emulated/0/", "/sdcard/");
-            File dir1 = new File(file);
-            if (dir1.exists()) {
-                Intent freeactivity = new Intent(MainActivity.this, Screen1Free.class);
-                freeactivity.putExtra("file", file);
-                Bundle bndlanimation =
+    public void selectedFile() {
+        String file = file1.replace("file:///storage/emulated/0/", "/sdcard/");
+        File dir1 = new File(file);
+        if (dir1.exists()) {
+            Intent freeactivity = new Intent(MainActivity.this, Screen1Free.class);
+            freeactivity.putExtra("file", file);
+            Bundle bndlanimation =
                     ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
-                startActivity(freeactivity, bndlanimation);
-            }
+            startActivity(freeactivity, bndlanimation);
+        }
     }
-    public void editFile(){
-            String file = file2.replace("file:///storage/emulated/0/","/sdcard/");
-            File dir1 = new File(file);
-            if (dir1.exists()) {
-                Intent formactivity = new Intent(MainActivity.this, FormActivity.class);
-                formactivity.putExtra("code", CODE_SD2);
-                formactivity.putExtra("file", file);
-                Bundle bndlanimation =
-                        ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
-                startActivity(formactivity, bndlanimation);
-            }
+
+    public void editFile() {
+        String file = file2.replace("file:///storage/emulated/0/", "/sdcard/");
+        File dir1 = new File(file);
+        if (dir1.exists()) {
+            Intent formactivity = new Intent(MainActivity.this, FormActivity.class);
+            formactivity.putExtra("code", CODE_SD2);
+            formactivity.putExtra("file", file);
+            Bundle bndlanimation =
+                    ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.anni1, R.anim.anni2).toBundle();
+            startActivity(formactivity, bndlanimation);
+        }
     }
 }
