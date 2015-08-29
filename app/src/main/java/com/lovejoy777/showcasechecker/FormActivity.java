@@ -47,7 +47,7 @@ public class FormActivity extends AppCompatActivity {
             "promo", "screenshot_1", "screenshot_2", "screenshot_3", "googleplus", "version", "donate_link",
             "donate_version", "wallpaper", "plugin_version", "toolbar_background_color", "for_L", "for_M",
             "basic", "basic_m", "type2", "type3", "type3_m", "touchwiz", "lg", "sense", "xperia", "zenui",
-            "hdpi", "mdpi", "xdpi", "xxhdpi", "xxxhdpi", "free", "donate", "paid", "needs_update", "will_update",
+            "hdpi", "mdpi", "xhdpi", "xxhdpi", "xxxhdpi", "free", "donate", "paid", "needs_update", "will_update",
             "bootani", "font", "iconpack"};
     ArrayList<String> values = new ArrayList<String>(Arrays.asList(strings));
     ArrayList<String> values2 = new ArrayList<String>();
