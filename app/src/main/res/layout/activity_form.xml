@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/downloadlink"
+                    android:id="@+id/link"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/downloadlink"
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/backupdownloadlink"
+                    android:id="@+id/backup_link"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/backupdownloadlink"
@@ -162,7 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/donatedownload"
+                    android:id="@+id/donate_link"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/donatedownload"
@@ -172,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/donateversion"
+                    android:id="@+id/donate_version"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/donateversion"
@@ -192,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/pluginversion"
+                    android:id="@+id/plugin_version"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pluginversion"
@@ -202,44 +202,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/color"
+                    android:id="@+id/toolbar_background_color"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/color"
                     />
             </android.support.design.widget.TextInputLayout>
             <CheckBox
-                android:id="@+id/lollipopsupport"
+                android:id="@+id/for_L"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lollipopsupport" />
             <CheckBox
-                android:id="@+id/msupport"
+                android:id="@+id/for_M"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/msupport" />
             <CheckBox
-                android:id="@+id/basicrrolollipop"
+                android:id="@+id/basic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/basicrrolollipop" />
             <CheckBox
-                android:id="@+id/basicrrom"
+                android:id="@+id/basic_m"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/basicrrom" />
             <CheckBox
-                android:id="@+id/layerstype2lollipop"
+                android:id="@+id/type2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/layerstype2lollipop" />
             <CheckBox
-                android:id="@+id/layerstype3"
+                android:id="@+id/type3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/layerstype3" />
             <CheckBox
-                android:id="@+id/layerstype3m"
+                android:id="@+id/type3_m"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/layerstype3m" />
@@ -264,7 +264,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/xperia" />
             <CheckBox
-                android:id="@+id/asuszenui"
+                android:id="@+id/zenui"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/asuszenui" />
@@ -309,17 +309,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/paid2" />
             <CheckBox
-                android:id="@+id/doesitneedupdating"
+                android:id="@+id/needs_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/doesitneedupdating" />
             <CheckBox
-                android:id="@+id/willyoubeupdating"
+                android:id="@+id/will_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/willyoubeupdating" />
             <CheckBox
-                android:id="@+id/bootanimation"
+                android:id="@+id/bootani"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/bootanimation" />

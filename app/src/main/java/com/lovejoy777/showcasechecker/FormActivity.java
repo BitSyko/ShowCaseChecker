@@ -37,6 +37,7 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Created by wh0_cares on 7/30/15.
@@ -51,14 +52,16 @@ public class FormActivity extends AppCompatActivity {
             "bootani", "font", "iconpack"};
     ArrayList<String> values = new ArrayList<String>(Arrays.asList(strings));
     ArrayList<String> values2 = new ArrayList<String>();
-    public final int[] EditText = {R.id.title, R.id.description, R.id.author, R.id.downloadlink,
-            R.id.backupdownloadlink, R.id.icon, R.id.promo, R.id.screenshot_1, R.id.screenshot_2, R.id.screenshot_3,
-            R.id.googleplus, R.id.version, R.id.donatedownload, R.id.donateversion, R.id.wallpaper, R.id.pluginversion,
-            R.id.color};
-    public final int[] CheckBox = {R.id.lollipopsupport, R.id.msupport, R.id.basicrrolollipop, R.id.basicrrom,
-            R.id.layerstype2lollipop, R.id.layerstype3, R.id.layerstype3m, R.id.touchwiz, R.id.lg, R.id.sense,
-            R.id.xperia, R.id.asuszenui, R.id.hdpi, R.id.mdpi, R.id.xhdpi, R.id.xxhdpi, R.id.xxxhdpi, R.id.free,
-            R.id.donate, R.id.paid, R.id.doesitneedupdating, R.id.willyoubeupdating, R.id.bootanimation, R.id.font, R.id.iconpack};
+    ArrayList<String> values3 = new ArrayList(values.subList(0, 17));
+    ArrayList<String> values4 = new ArrayList(values.subList(17, 42));
+    public final int[] EditText = {R.id.title, R.id.description, R.id.author, R.id.link,
+            R.id.backup_link, R.id.icon, R.id.promo, R.id.screenshot_1, R.id.screenshot_2, R.id.screenshot_3,
+            R.id.googleplus, R.id.version, R.id.donate_link, R.id.donate_version, R.id.wallpaper, R.id.plugin_version,
+            R.id.toolbar_background_color};
+    public final int[] CheckBox = {R.id.for_L, R.id.for_M, R.id.basic, R.id.basic_m,
+            R.id.type2, R.id.type3, R.id.type3_m, R.id.touchwiz, R.id.lg, R.id.sense,
+            R.id.xperia, R.id.zenui, R.id.hdpi, R.id.mdpi, R.id.xhdpi, R.id.xxhdpi, R.id.xxxhdpi, R.id.free,
+            R.id.donate, R.id.paid, R.id.needs_update, R.id.will_update, R.id.bootani, R.id.font, R.id.iconpack};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,25 +182,22 @@ public class FormActivity extends AppCompatActivity {
                 stream.close();
             }
             JSONObject object = new JSONObject(jString);
-            int text = 0;
-            for (int id : EditText) {
-                String json = values.get(text);
-                text++;
-                ((EditText) findViewById(id)).setText(object.getString(json), TextView.BufferType.EDITABLE);
-            }
-            int check = 17;
-            //TODO
-            // Try to find a fix for checkboxes not being checked
-            // true if the json file is missing a string. This Has to
-            // do int check = 17; getting the 17th string which should
-            // be for_L if there is a string missing from the json it messes up the array
-            for (int id2 : CheckBox) {
-                String json = values.get(check);
-                check++;
-                CheckBox cb = (CheckBox) findViewById(id2);
-                boolean c;
-                c = (object.getString(json).equals("true")) ? true : false;
-                cb.setChecked(c);
+            Iterator<String> iter = object.keys();
+            while (iter.hasNext()) {
+                String key = iter.next();
+                int keyID = getResources().getIdentifier(key, "id", getPackageName());
+                if (values3.contains(key)) {
+                    Object value = object.get(key);
+                    String jsonvalue = value.toString();
+                    ((EditText) findViewById(keyID)).setText(jsonvalue, TextView.BufferType.EDITABLE);
+                } else if (values4.contains(key)) {
+                    Object value = object.get(key);
+                    String jsonvalue = value.toString();
+                    CheckBox cb = (CheckBox) findViewById(keyID);
+                    boolean c;
+                    c = jsonvalue.equals("true") ? true : false;
+                    cb.setChecked(c);
+                }
             }
         } catch (ParseException e1) {
             e1.printStackTrace();
