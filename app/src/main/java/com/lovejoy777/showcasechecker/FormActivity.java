@@ -186,13 +186,11 @@ public class FormActivity extends AppCompatActivity {
             while (iter.hasNext()) {
                 String key = iter.next();
                 int keyID = getResources().getIdentifier(key, "id", getPackageName());
+                Object value = object.get(key);
+                String jsonvalue = value.toString();
                 if (values3.contains(key)) {
-                    Object value = object.get(key);
-                    String jsonvalue = value.toString();
                     ((EditText) findViewById(keyID)).setText(jsonvalue, TextView.BufferType.EDITABLE);
                 } else if (values4.contains(key)) {
-                    Object value = object.get(key);
-                    String jsonvalue = value.toString();
                     CheckBox cb = (CheckBox) findViewById(keyID);
                     boolean c;
                     c = jsonvalue.equals("true") ? true : false;
